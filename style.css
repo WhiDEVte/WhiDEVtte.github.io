@@ -1,0 +1,782 @@
+/* ==========================================================================
+   Google Style Startpage CSS
+   ========================================================================== */
+
+:root {
+  /* 라이트 모드 색상 */
+  --bg-color: #ffffff;
+  --surface-color: #ffffff;
+  --surface-hover: #f8f9fa;
+  --card-bg: #ffffff;
+  --card-border: #e8eaed;
+  --card-shadow: 0 1px 3px rgba(60, 64, 67, 0.1), 0 4px 8px rgba(60, 64, 67, 0.06);
+  --card-hover-shadow: 0 2px 6px rgba(60, 64, 67, 0.15), 0 8px 16px rgba(60, 64, 67, 0.1);
+
+  --text-primary: #202124;
+  --text-secondary: #5f6368;
+  --text-tertiary: #80868b;
+  --divider: #dadce0;
+
+  --search-border: #dfe1e5;
+  --search-shadow: 0 1px 6px rgba(32, 33, 36, 0.2);
+  --btn-bg: #f8f9fa;
+  --btn-text: #3c4043;
+  --btn-border: #f8f9fa;
+  --btn-hover-border: #dadce0;
+  --btn-hover-bg: #f1f3f4;
+
+  --accent-blue: #1a73e8;
+  --accent-blue-hover: #1765cc;
+  --badge-bg: #e8f0fe;
+  --badge-text: #1967d2;
+
+  --footer-bg: #f2f2f2;
+  --footer-text: #70757a;
+  --footer-border: #dadce0;
+
+  --font-family: -apple-system, BlinkMacSystemFont, "Google Sans", "Noto Sans KR", Roboto, "Segoe UI", Helvetica, Arial, sans-serif;
+  --transition-speed: 0.25s;
+}
+
+[data-theme="dark"] {
+  /* 다크 모드 색상 */
+  --bg-color: #202124;
+  --surface-color: #303134;
+  --surface-hover: #3c4043;
+  --card-bg: #303134;
+  --card-border: #3c4043;
+  --card-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 4px 8px rgba(0, 0, 0, 0.2);
+  --card-hover-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), 0 8px 20px rgba(0, 0, 0, 0.3);
+
+  --text-primary: #e8eaed;
+  --text-secondary: #9aa0a6;
+  --text-tertiary: #80868b;
+  --divider: #3c4043;
+
+  --search-border: #5f6368;
+  --search-shadow: 0 1px 8px rgba(0, 0, 0, 0.4);
+  --btn-bg: #303134;
+  --btn-text: #e8eaed;
+  --btn-border: #303134;
+  --btn-hover-border: #5f6368;
+  --btn-hover-bg: #3c4043;
+
+  --accent-blue: #8ab4f8;
+  --accent-blue-hover: #aecbfa;
+  --badge-bg: #1c3b5e;
+  --badge-text: #8ab4f8;
+
+  --footer-bg: #171717;
+  --footer-text: #9aa0a6;
+  --footer-border: #2d2e30;
+}
+
+/* --------------------------------------------------
+   리셋 및 전역 스타일
+   -------------------------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+/* --------------------------------------------------
+   상단 네비게이션 헤더
+   -------------------------------------------------- */
+.top-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 24px;
+  height: 64px;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* 서울디지털대학교 로고 링크 */
+.sdu-logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  border-radius: 20px;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.sdu-logo-link:hover {
+  transform: translateY(-1px);
+}
+
+.sdu-logo-badge {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  background-color: var(--surface-color);
+  padding: 4px 12px 4px 5px;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.sdu-logo-link:hover .sdu-logo-badge {
+  background-color: var(--surface-hover);
+  box-shadow: 0 2px 6px rgba(0, 43, 122, 0.15);
+  border-color: rgba(0, 102, 204, 0.35);
+}
+
+.sdu-symbol {
+  flex-shrink: 0;
+  display: block;
+}
+
+.sdu-text-group {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.15;
+}
+
+.sdu-brand-en {
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  color: #004b9a;
+}
+
+[data-theme="dark"] .sdu-brand-en {
+  color: #66b2ff;
+}
+
+.sdu-brand-kr {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.datetime-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  background-color: var(--surface-color);
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.date-sep {
+  color: var(--divider);
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.icon-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  color: var(--text-secondary);
+  transition: background-color 0.2s ease, transform 0.15s ease;
+}
+
+.icon-button:hover {
+  background-color: var(--surface-hover);
+  color: var(--text-primary);
+}
+
+.icon-button:active {
+  transform: scale(0.95);
+}
+
+.theme-toggle .dark-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .light-icon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle .dark-icon {
+  display: inline;
+}
+
+.user-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4285F4, #34A853);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 14px;
+  margin-left: 6px;
+  cursor: pointer;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+}
+
+/* --------------------------------------------------
+   메인 컨테이너
+   -------------------------------------------------- */
+.main-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 16px 20px 48px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* --------------------------------------------------
+   검색창 섹션 (Google Search Box)
+   -------------------------------------------------- */
+.search-section {
+  width: 100%;
+  max-width: 600px;
+  margin-top: 36px;
+  margin-bottom: 32px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 48px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--search-border);
+  border-radius: 24px;
+  padding: 0 16px;
+  transition: box-shadow 0.2s ease, border-color 0.2s ease, background-color var(--transition-speed);
+}
+
+.search-box:hover,
+.search-box:focus-within {
+  box-shadow: var(--search-shadow);
+  border-color: transparent;
+}
+
+.search-icon {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+}
+
+#search-input {
+  flex: 1;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--text-primary);
+  font-family: inherit;
+}
+
+#search-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.search-actions-right {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: 8px;
+}
+
+.voice-search-btn,
+.lens-search-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 6px;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.voice-search-btn:hover,
+.lens-search-btn:hover {
+  background-color: var(--surface-hover);
+}
+
+.search-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.google-btn {
+  background-color: var(--btn-bg);
+  border: 1px solid var(--btn-border);
+  color: var(--btn-text);
+  font-size: 14px;
+  padding: 0 16px;
+  height: 36px;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.google-btn:hover {
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  background-color: var(--btn-hover-bg);
+  border-color: var(--btn-hover-border);
+  color: var(--text-primary);
+}
+
+/* --------------------------------------------------
+   오늘의 명언 섹션
+   -------------------------------------------------- */
+.quote-section {
+  width: 100%;
+  max-width: 680px;
+  margin-bottom: 28px;
+}
+
+.quote-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 14px 20px;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed) ease;
+}
+
+.quote-card:hover {
+  box-shadow: var(--card-hover-shadow);
+}
+
+.quote-icon-box {
+  color: var(--accent-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.quote-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.quote-text {
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--text-primary);
+  margin-bottom: 4px;
+  word-break: keep-all;
+  transition: opacity 0.3s ease;
+}
+
+.quote-author {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  display: inline-block;
+  font-style: italic;
+  transition: opacity 0.3s ease;
+}
+
+.quote-refresh-btn {
+  color: var(--text-tertiary);
+  padding: 8px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: all 0.25s ease;
+}
+
+.quote-refresh-btn:hover {
+  color: var(--accent-blue);
+  background-color: var(--surface-hover);
+  transform: rotate(180deg);
+}
+
+/* --------------------------------------------------
+   오늘의 날씨 섹션 [서울, 제주]
+   -------------------------------------------------- */
+.weather-section {
+  width: 100%;
+  max-width: 780px;
+  margin-bottom: 32px;
+}
+
+.section-title {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 0 4px;
+}
+
+.section-title-icon {
+  font-size: 18px;
+}
+
+.section-title h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+  letter-spacing: -0.2px;
+}
+
+.weather-update-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 12px;
+  background-color: var(--badge-bg);
+  color: var(--badge-text);
+  margin-left: 4px;
+}
+
+.weather-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.weather-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: var(--card-shadow);
+  transition: all var(--transition-speed) ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.weather-card:hover {
+  box-shadow: var(--card-hover-shadow);
+  transform: translateY(-2px);
+}
+
+.weather-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.city-info {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.city-pin {
+  font-size: 16px;
+}
+
+.city-name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.city-eng {
+  font-size: 12px;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.weather-badge {
+  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-weight: 500;
+}
+
+.status-loading {
+  background-color: var(--btn-hover-bg);
+  color: var(--text-secondary);
+}
+
+.status-live {
+  background-color: #e6f4ea;
+  color: #137333;
+}
+
+[data-theme="dark"] .status-live {
+  background-color: #0f381e;
+  color: #81c995;
+}
+
+.weather-body {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.weather-icon-temp {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.weather-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.weather-icon svg {
+  width: 56px;
+  height: 56px;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.12));
+}
+
+.temp-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.current-temp {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--text-primary);
+  font-family: "Google Sans", Roboto, sans-serif;
+}
+
+.weather-desc {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-top: 2px;
+}
+
+.weather-details {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  padding-top: 12px;
+  border-top: 1px solid var(--divider);
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.detail-label {
+  font-size: 11px;
+  color: var(--text-tertiary);
+  margin-bottom: 2px;
+}
+
+.detail-value {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+/* 로딩 스피너 */
+.spinner {
+  width: 26px;
+  height: 26px;
+  border: 3px solid rgba(66, 133, 244, 0.2);
+  border-top-color: #4285F4;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --------------------------------------------------
+   빠른 바로가기 (Shortcuts)
+   -------------------------------------------------- */
+.shortcuts-section {
+  width: 100%;
+  max-width: 580px;
+  margin-top: 4px;
+}
+
+.shortcuts-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.shortcut-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 72px;
+  padding: 8px 4px;
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.shortcut-item:hover {
+  background-color: var(--surface-hover);
+}
+
+.shortcut-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: var(--surface-hover);
+  border: 1px solid var(--card-border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.shortcut-item:hover .shortcut-icon {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.12);
+}
+
+.shortcut-title {
+  font-size: 12px;
+  color: var(--text-primary);
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+
+/* --------------------------------------------------
+   하단 푸터
+   -------------------------------------------------- */
+.footer {
+  background-color: var(--footer-bg);
+  color: var(--footer-text);
+  font-size: 14px;
+  border-top: 1px solid var(--footer-border);
+  margin-top: auto;
+}
+
+.footer-country {
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--footer-border);
+  font-size: 14px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding: 10px 24px;
+  gap: 16px;
+}
+
+.footer-left-links,
+.footer-right-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: var(--text-tertiary);
+}
+
+/* --------------------------------------------------
+   반응형 미디어 쿼리
+   -------------------------------------------------- */
+@media (max-width: 700px) {
+  .weather-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-nav {
+    padding: 12px 14px;
+    gap: 8px;
+  }
+
+  .nav-left {
+    gap: 8px;
+  }
+
+  .sdu-brand-kr {
+    display: none;
+  }
+
+  .datetime-badge {
+    font-size: 11px;
+    padding: 4px 8px;
+    gap: 5px;
+  }
+
+  .search-section {
+    margin-top: 20px;
+    margin-bottom: 24px;
+  }
+
+  .footer-links {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .footer-left-links,
+  .footer-right-links {
+    gap: 14px;
+  }
+}
